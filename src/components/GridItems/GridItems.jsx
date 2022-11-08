@@ -3,11 +3,11 @@ import { Card, Image, MovieName, Thumb } from './GridItems.styled';
 export const GridItems = ({ items }) => {
   return (
     <>
-      {items.map(({ id, title, backdrop_path }) => (
+      {items.map(({ id, title, poster_path }) => (
         <Card key={id}>
           <Link to={`movies/${id}`}>
             <Image
-              src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
               alt=""
               width={'200px'}
             />
