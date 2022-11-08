@@ -1,3 +1,10 @@
 export const Movies = () => {
-  return <h1>Its search page </h1>;
+  return (
+    <>
+      <form action="">
+        <input type="text" />
+        <button type="submit">search</button>
+      </form>
+    </>
+  );
 };

@@ -5,7 +5,7 @@ export const GridItems = ({ items }) => {
     <>
       {items.map(({ id, title, backdrop_path }) => (
         <Card key={id}>
-          <Link to={`${id}`}>
+          <Link to={`movies/${id}`}>
             <Image
               src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
               alt=""

@@ -13,7 +13,6 @@ export const Layout = () => {
           <StyledLink to="/movies">Movies</StyledLink>
         </nav>
       </Header>
-
       <Outlet />
     </>
   );
