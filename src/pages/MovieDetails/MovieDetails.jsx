@@ -8,34 +8,35 @@ export default function MovieDetails() {
   const { poster_path, title, overview, popularity, genres } = movieDetails;
 
   useEffect(() => {
-    const getMovieDetails = async () => {
+    async function getMovieDetails() {
       try {
         const response = await thmdAPI.get(`/movie/${movieId}`);
+
         setMovieDetails(response.data);
       } catch (error) {
         console.log(error);
       }
-    };
-
+    }
     getMovieDetails();
   }, [movieId]);
 
   return (
     <>
-      <div>
-        {' '}
-        <Link to="/">
-          <button type="button">Go back</button>
-        </Link>
-        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="" />
-        <h2>{title}</h2>
-        <p>User Score: {Math.round(popularity)}%</p>
-        <p>{overview}</p>
-        <p>Genres</p>
-        {genres?.map(genre => (
-          <span>{genre.name}</span>
-        ))}
-      </div>
+      {movieDetails.length !== 0 && (
+        <div>
+          <Link to="/">
+            <button type="button">Go back</button>
+          </Link>
+          <img src={`https://image.tmdb.org/t/p/w342/${poster_path}`} alt="" />
+          <h2>{title}</h2>
+          <p>User Score: {Math.round(popularity)}</p>
+          <p>{overview}</p>
+          <p>Genres</p>
+          {genres?.map(genre => (
+            <span key={genre.id}>{genre.name}</span>
+          ))}
+        </div>
+      )}
     </>
   );
 }
