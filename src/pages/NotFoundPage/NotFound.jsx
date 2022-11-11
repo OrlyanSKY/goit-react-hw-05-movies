@@ -1,3 +1,4 @@
+import { StyledLink } from 'components/StyledLink/StyledLink.styled';
 export const NotFound = () => {
   return (
     <>
@@ -5,13 +6,13 @@ export const NotFound = () => {
         style={{
           height: '100vh',
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
         }}
       >
-        It's empty page
+        <p style={{ fontSize: 40, color: '#010101' }}>It's empty page</p>
+        <StyledLink to="/">Go to home page</StyledLink>
       </div>
     </>
   );

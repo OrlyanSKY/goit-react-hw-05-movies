@@ -23,13 +23,15 @@ export const Image = styled.img`
 `;
 
 export const Thumb = styled.div`
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 `;
 
 export const MovieName = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   text-shadow: 1px 4px 8px rgba(0, 0, 0, 0.75);
 `;
