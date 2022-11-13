@@ -10,7 +10,7 @@ export default function Cast() {
   useEffect(() => {
     async function getCast() {
       try {
-        const response = await thmdAPI.get(`/movie/${movieId}/credits`);
+        const response = await thmdAPI.get(`/movie/${Number(movieId)}/credits`);
         setCasts(response.data.cast);
       } catch (error) {
         console.error(error);

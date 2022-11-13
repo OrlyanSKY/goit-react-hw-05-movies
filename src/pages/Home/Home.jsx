@@ -11,7 +11,7 @@ export const Home = () => {
   useEffect(() => {
     const getTrends = async () => {
       try {
-        const response = await thmdAPI.get('/movie/top_rated');
+        const response = await thmdAPI.get('/trending/movie/day');
 
         setMovies(response.data.results);
       } catch (error) {
