@@ -5,7 +5,7 @@ import { Container } from 'components/Container/Container.styled';
 import { StyledGrid } from 'components/Grid/Grid';
 import { GridItems } from 'components/GridItems/GridItems';
 
-export const Home = () => {
+export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -32,4 +32,4 @@ export const Home = () => {
       </main>
     </Container>
   );
-};
+}

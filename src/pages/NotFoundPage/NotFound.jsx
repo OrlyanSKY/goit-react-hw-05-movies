@@ -1,5 +1,5 @@
 import { StyledLink } from 'components/StyledLink/StyledLink.styled';
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <>
       <div
@@ -17,3 +17,5 @@ export const NotFound = () => {
     </>
   );
 };
+
+export default NotFound;

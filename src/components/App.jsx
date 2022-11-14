@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { Layout } from './Layout/Layout';
-import { Home } from '../pages/Home/Home';
-import { NotFound } from 'pages/NotFoundPage/NotFound';
+import Layout from './Layout/Layout';
+import Home from '../pages/Home/Home';
+import NotFound from 'pages/NotFoundPage/NotFound';
 import Movies from '../pages/Movies/Movies';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';

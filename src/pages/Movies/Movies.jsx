@@ -5,16 +5,16 @@ import { SearchBar } from 'components/SearchBar/SearchBar';
 import { thmdAPI } from 'Services/tmdbAPI';
 
 export default function Movies() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
   const [foundMovies, setFoundMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (!query) return;
-    async function getMovie() {
+    if (!searchQuery) return;
+    async function getMovieByKeyword() {
       try {
         const response = await thmdAPI.get('/search/movie', {
-          params: { query },
+          params: { query: searchQuery },
         });
         if (response.data.results.length === 0) {
           alert('Nothing found');
@@ -24,8 +24,8 @@ export default function Movies() {
         alert('somthing went wrong!Try again');
       }
     }
-    getMovie();
-  }, [query]);
+    getMovieByKeyword();
+  }, [searchQuery]);
 
   const getQuery = query => {
     setSearchParams(query.trim() !== '' ? { query } : {});
@@ -43,7 +43,3 @@ export default function Movies() {
     </>
   );
 }
-
-//   setSearchParams(
-//     e.target.value.trim() !== '' ? { query: e.target.value } : {}
-//   )

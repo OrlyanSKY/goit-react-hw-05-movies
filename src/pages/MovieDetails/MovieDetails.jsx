@@ -9,8 +9,6 @@ import { StyledLink } from 'pages/MovieDetails/MovieDetails.styled';
 export default function MovieDetails() {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
-  const { poster_path, title, overview, vote_average, genres, release_date } =
-    movieDetails;
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -24,6 +22,9 @@ export default function MovieDetails() {
     }
     getMovieDetails();
   }, [movieId]);
+
+  const { poster_path, title, overview, vote_average, genres, release_date } =
+    movieDetails;
 
   return (
     <>

@@ -1,10 +1,10 @@
-import { useState } from 'react';
-
 export const SearchBar = ({ onSubmit }) => {
-  const [query, setQuery] = useState('');
-
   const handleSubmit = e => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    const query = form.elements.search.value;
+
     if (query === '') {
       alert('enter movie name...');
       return;
@@ -13,12 +13,7 @@ export const SearchBar = ({ onSubmit }) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter movie name..."
-        name="search"
-        onChange={e => setQuery(e.target.value)}
-      />
+      <input type="text" placeholder="Enter movie name..." name="search" />
       <button type="submit">search</button>
     </form>
   );
