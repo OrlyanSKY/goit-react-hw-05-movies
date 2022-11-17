@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { thmdAPI } from 'Services/tmdbAPI';
+import { StyledGrid } from 'components/Grid/Grid';
 
 export default function Movies() {
   const [foundMovies, setFoundMovies] = useState([]);
@@ -33,13 +34,7 @@ export default function Movies() {
   return (
     <>
       <SearchBar onSubmit={getQuery} />
-      <ul>
-        {foundMovies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`${movie.id}`}>{movie.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <StyledGrid items={foundMovies} />
     </>
   );
 }

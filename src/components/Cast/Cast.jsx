@@ -22,7 +22,7 @@ export default function Cast() {
 
   return (
     <>
-      {casts.length > 0 && (
+      {casts.length > 0 ? (
         <CardList>
           {casts.map(cast => (
             <Card key={cast.cast_id}>
@@ -43,24 +43,9 @@ export default function Cast() {
             </Card>
           ))}
         </CardList>
+      ) : (
+        <p>Та это ж мультик , какие тебе актеры?</p>
       )}
     </>
   );
 }
-
-// {
-//   casts.map(cast => (
-//     <div>
-//       <img
-//         key={cast.cast_id}
-//         src={
-//           cast.profile_path
-//             ? `https://image.tmdb.org/t/p/w200${cast.profile_path}`
-//             : `https://cdn.pixabay.com/photo/2014/03/24/17/18/smiley-295353__340.png`
-//         }
-//         alt={cast.name}
-//         width="150"
-//       />
-//     </div>
-//   ));
-// }

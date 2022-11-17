@@ -1,14 +1,16 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { BiChevronsLeft } from 'react-icons/bi';
+
 import { thmdAPI } from 'Services/tmdbAPI';
 
-import { Wrapper } from './MovieDetails.styled';
 import { StyledLink } from 'pages/MovieDetails/MovieDetails.styled';
+import { BackLink } from 'components/BackLink/BackLink';
+import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -23,45 +25,23 @@ export default function MovieDetails() {
     getMovieDetails();
   }, [movieId]);
 
-  const { poster_path, title, overview, vote_average, genres, release_date } =
-    movieDetails;
-
   return (
     <>
-      <Link to="/">
-        <button type="button">
-          <BiChevronsLeft />
-          Go back
-        </button>
-      </Link>
-      {movieDetails.length !== 0 && (
-        <Wrapper>
-          <div style={{ maxWidth: '320px' }}>
-            <img
-              src={`https://image.tmdb.org/t/p/w342/${poster_path}`}
-              alt={title}
-            />
-          </div>
-          <div style={{ padding: '5px' }}>
-            <h2>
-              {title} ({release_date.split('-')[0]})
-            </h2>
-            <p>User Score: {(vote_average * 10).toFixed()} %</p>
-            <h3>Overview</h3>
-            <p>{overview}</p>
-            <h3>Genres</h3>
-            {genres?.map(genre => (
-              <span key={genre.id}>{genre.name}</span>
-            ))}
-          </div>
-        </Wrapper>
-      )}
-      <div>
-        <p>Additional information</p>
+      <BackLink location={location} />
+      {movieDetails.length !== 0 && <MovieInfo details={movieDetails} />}
+      <div style={{ marginBottom: '15px' }}>
+        <h3>Additional information</h3>
         <nav style={{ display: 'flex' }}>
-          <StyledLink to="cast">Cast</StyledLink>
+          <StyledLink to="cast" state={{ from: location.state?.from ?? '/' }}>
+            Cast
+          </StyledLink>
 
-          <StyledLink to="reviews">Reviews</StyledLink>
+          <StyledLink
+            to="reviews"
+            state={{ from: location.state?.from ?? '/' }}
+          >
+            Reviews
+          </StyledLink>
         </nav>
       </div>
       <Outlet />

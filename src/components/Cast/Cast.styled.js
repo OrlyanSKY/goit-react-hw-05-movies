@@ -1,10 +1,6 @@
 import styled from '@emotion/styled';
 
 export const CardList = styled.ul`
-  /* display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  list-style: none; */
   display: grid;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

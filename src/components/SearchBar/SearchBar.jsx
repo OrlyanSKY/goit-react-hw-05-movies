@@ -1,3 +1,5 @@
+import { Form, Field } from './SearchBar.styled';
+
 export const SearchBar = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -12,9 +14,9 @@ export const SearchBar = ({ onSubmit }) => {
     onSubmit(query);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Enter movie name..." name="search" />
+    <Form onSubmit={handleSubmit}>
+      <Field type="text" placeholder="Enter movie name..." name="search" />
       <button type="submit">search</button>
-    </form>
+    </Form>
   );
 };
