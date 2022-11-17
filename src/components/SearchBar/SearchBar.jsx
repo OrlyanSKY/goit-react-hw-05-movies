@@ -1,4 +1,5 @@
-import { Form, Field } from './SearchBar.styled';
+import { Form, Field, SubmitBtn } from './SearchBar.styled';
+import PropTypes from 'prop-types';
 
 export const SearchBar = ({ onSubmit }) => {
   const handleSubmit = e => {
@@ -15,8 +16,14 @@ export const SearchBar = ({ onSubmit }) => {
   };
   return (
     <Form onSubmit={handleSubmit}>
-      <Field type="text" placeholder="Enter movie name..." name="search" />
-      <button type="submit">search</button>
+      <div>
+        <Field type="text" placeholder="Enter movie name..." name="search" />
+        <SubmitBtn type="submit">search</SubmitBtn>
+      </div>
     </Form>
   );
+};
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

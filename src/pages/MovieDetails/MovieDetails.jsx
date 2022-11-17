@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
+import { Suspense, useEffect, useState } from 'react';
+import { Puff } from 'react-loader-spinner';
 import { thmdAPI } from 'Services/tmdbAPI';
 
 import { StyledLink } from 'pages/MovieDetails/MovieDetails.styled';
@@ -44,7 +44,21 @@ export default function MovieDetails() {
           </StyledLink>
         </nav>
       </div>
-      <Outlet />
+      <Suspense
+        fallback={
+          <Puff
+            wrapperStyle={{
+              height: '100vh',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          />
+        }
+      >
+        <Outlet />
+      </Suspense>
     </>
   );
 }

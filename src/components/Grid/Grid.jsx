@@ -1,6 +1,7 @@
-import { GridItems } from 'components/GridItems/GridItems';
+import PropTypes from 'prop-types';
 
 import { Grid } from './Grid.styled';
+import { GridItems } from 'components/GridItems/GridItems';
 
 export const StyledGrid = ({ items }) => {
   return (
@@ -8,4 +9,8 @@ export const StyledGrid = ({ items }) => {
       <GridItems items={items} />
     </Grid>
   );
+};
+
+StyledGrid.propTypes = {
+  items: PropTypes.array,
 };

@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import { Overview, Title, Wrapper, Genre, Poster } from './MovieInfo.styled';
 
-export const MovieInfo = ({ details }) => {
-  const { poster_path, title, overview, vote_average, genres, release_date } =
-    details;
+export const MovieInfo = ({
+  details: { poster_path, title, overview, vote_average, genres, release_date },
+}) => {
   return (
     <Wrapper>
       <Poster>
@@ -27,4 +28,13 @@ export const MovieInfo = ({ details }) => {
       </div>
     </Wrapper>
   );
+};
+
+MovieInfo.propTypes = {
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+  overview: PropTypes.string,
+  vote_average: PropTypes.number,
+  genres: PropTypes.objectOf(PropTypes.string),
+  release_date: PropTypes.string,
 };
